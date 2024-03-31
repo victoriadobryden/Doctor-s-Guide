@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Disease Search</title>
+</head>
+<body>
+
+<div class="container">
+    <h1>Search for a Disease</h1>
+    <form th:action="@{/search}" method="get">
+        <input type="text" name="query" placeholder="Enter disease name or symptoms">
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+<!-- You might include a results section here -->
+<div th:if="${not #lists.isEmpty(diseases)}">
+    <h2>Search Results</h2>
+    <div th:each="disease : ${diseases}">
+        <!-- Display each disease information -->
+        <p th:text="${disease.name}">Disease Name</p>
+        <!-- Add more details as needed -->
+    </div>
+</div>
+
+<!-- Include your static resources here -->
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<script th:src="@{/js/script.js}"></script>
+
+</body>
+</html>
