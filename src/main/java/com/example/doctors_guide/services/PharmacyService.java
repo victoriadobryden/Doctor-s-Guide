@@ -1,7 +1,7 @@
 package com.example.doctors_guide.services;
 
 import com.example.doctors_guide.data.Medications;
-import com.example.doctors_guide.repositories.InterchangeableMedicationsRepository;
+import com.example.doctors_guide.repositories.InterchangebleMedicationsRepository;
 import com.example.doctors_guide.repositories.MedicationsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,12 +14,12 @@ public class PharmacyService {
 
     @Autowired
     public PharmacyService(MedicationsRepository medicationsRepository,
-                           InterchangeableMedicationsRepository interchangeableMedicationsRepository) {
+                           InterchangebleMedicationsRepository interchangebleMedicationsRepository) {
         this.medicationsRepository = medicationsRepository;
     }
 
     // Method to check medication availability and decrement stock
-    public boolean checkAndDecrementStock(Long medicationId) {
+    public boolean checkAndDecrementStock(Integer medicationId) {
         Optional<Medications> medicationOpt = medicationsRepository.findById(medicationId);
         if (medicationOpt.isPresent() && medicationOpt.get().getQuantity() > 0) {
             Medications medication = medicationOpt.get();
@@ -34,11 +34,8 @@ public class PharmacyService {
     public void replenishStock() {
         // Logic to replenish stock when it falls below a certain threshold
     }
-
     // Method to ensure interchangeability
-    public void checkAndEnsureInterchangeability(Long medicationId) {
+    public void checkAndEnsureInterchangeability(Integer medicationId) {
         // Logic to check and ensure at least one interchangeable medication is in stock
     }
-
-    // Additional methods as per your business requirements...
 }

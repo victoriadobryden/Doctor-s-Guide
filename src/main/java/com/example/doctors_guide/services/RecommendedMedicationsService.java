@@ -1,11 +1,15 @@
 package com.example.doctors_guide.services;
 
+import com.example.doctors_guide.data.Medications;
 import com.example.doctors_guide.data.RecommendedMedications;
+import com.example.doctors_guide.repositories.MedicationsRepository;
 import com.example.doctors_guide.repositories.RecommendedMedicationsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class RecommendedMedicationsService {
@@ -21,5 +25,11 @@ public class RecommendedMedicationsService {
         return recommendedMedicationsRepository.findAll();
     }
 
-    // Additional service methods can be defined here
+    public List<Medications> findMedicationsForDisease(Integer diseaseId) {
+        List<RecommendedMedications> recommendedMedications = recommendedMedicationsRepository.findByDiseaseId(diseaseId);
+        return recommendedMedications.stream()
+                .map(RecommendedMedications::getMedication)
+                .collect(Collectors.toList());
+    }
+
 }

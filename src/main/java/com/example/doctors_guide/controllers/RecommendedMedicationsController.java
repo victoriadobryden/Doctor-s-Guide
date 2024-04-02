@@ -26,5 +26,4 @@ public class RecommendedMedicationsController {
         return ResponseEntity.ok(recommendedMedications);
     }
 
-    // Additional endpoints...
 }

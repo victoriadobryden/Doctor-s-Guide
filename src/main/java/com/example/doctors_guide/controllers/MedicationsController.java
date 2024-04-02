@@ -11,7 +11,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/medications")
 public class MedicationsController {
-
     private final MedicationsService medicationsService;
 
     @Autowired
@@ -25,5 +24,4 @@ public class MedicationsController {
         return ResponseEntity.ok(medications);
     }
 
-    // Additional endpoints...
 }

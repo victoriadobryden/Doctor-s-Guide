@@ -1,12 +1,10 @@
 package com.example.doctors_guide.data;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
+@Table(name = "medications")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -15,11 +13,11 @@ import lombok.*;
 public class Medications {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id; // Changed to Integer
+    private Integer id;
+
     private String name;
     private Integer quantity;
-    private Integer dosingMg;
+    private Integer dosing_mg;
 
-    // Constructors, getters, and setters...
 }
 

@@ -21,5 +21,4 @@ public class MedicationsService {
         return medicationsRepository.findAll();
     }
 
-    // Additional service methods can be defined here
 }

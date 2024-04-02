@@ -1,24 +1,38 @@
 package com.example.doctors_guide.data;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
+@Table(name = "recommendedmedications")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@IdClass(RecommendedMedicationId.class)
 public class RecommendedMedications {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id; // Changed to Integer
-    private Integer diseaseId; // Changed to Integer
-    private Integer medicationId; // Changed to Integer
-    private Integer recommendedDosingMg;
+    private Integer disease_id;
 
-    // Constructors, getters, and setters...
+    @Getter
+    @Id
+    private Integer medication_id;
+
+    private Integer recommended_dosing_mg;
+
+    @ManyToOne
+    @JoinColumn(name = "disease_id", insertable = false, updatable = false)
+    private Diseases disease;
+
+    @ManyToOne
+    @JoinColumn(name = "medication_id", insertable = false, updatable = false)
+    private Medications medication;
+
+    public RecommendedMedications(Integer disease_id, Integer medication_id, Integer recommended_dosing_mg) {
+        this.disease_id = disease_id;
+        this.medication_id = medication_id;
+        this.recommended_dosing_mg = recommended_dosing_mg;
+    }
+
 }

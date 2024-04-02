@@ -5,24 +5,37 @@
     <title>Disease Search</title>
 </head>
 <body>
+    <div class="container">
+        <h1>Search for a Disease</h1>
+        <form th:action="@{/recipe}" method="get">
+            <select name="diseaseId" onchange="getRecipe(this.value)">
+                <option value="" selected>Choose a disease...</option>
+                <option th:each="disease : ${allDiseases}"
+                        th:value="${disease.id}"
+                        th:text="${disease.name}">Disease Name</option>
+            </select>
+            <button type="submit">Get Recipe</button>
+            <div id="recipe">
+                <!-- The recipe fragment will be inserted here -->
+            </div>
 
-<div class="container">
-    <h1>Search for a Disease</h1>
-    <form th:action="@{/search}" method="get">
-        <input type="text" name="query" placeholder="Enter disease name or symptoms">
-        <button type="submit">Search</button>
-    </form>
-</div>
-
-<!-- You might include a results section here -->
-<div th:if="${not #lists.isEmpty(diseases)}">
-    <h2>Search Results</h2>
-    <div th:each="disease : ${diseases}">
-        <!-- Display each disease information -->
-        <p th:text="${disease.name}">Disease Name</p>
-        <!-- Add more details as needed -->
+        </form>
     </div>
-</div>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    function getRecipe(diseaseId) {
+        if(diseaseId) {
+            fetch(`/recipe?diseaseId=${diseaseId}`)
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('recipe').innerHTML = html;
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    }
+    /*]]>*/
+</script>
 
 <!-- Include your static resources here -->
 <link rel="stylesheet" th:href="@{/css/style.css}">

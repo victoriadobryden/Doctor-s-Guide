@@ -39,5 +39,4 @@ public class DiseasesController {
                 .body(e.getMessage());
     }
 
-    // Add more endpoints as needed
 }

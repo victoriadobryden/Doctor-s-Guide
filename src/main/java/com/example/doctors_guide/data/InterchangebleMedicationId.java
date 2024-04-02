@@ -1,27 +1,21 @@
 package com.example.doctors_guide.data;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Objects;
 
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class InterchangebleMedicationId implements Serializable {
     private Integer medication_id;
     private Integer interchangeble_with_id;
 
-    public Integer getMedication_id() {
-        return medication_id;
-    }
-
     public void setMedication_id(Integer medication_id) {
         this.medication_id = medication_id;
-    }
-
-    public Integer getInterchangeble_with_id() {
-        return interchangeble_with_id;
     }
 
     public void setInterchangeble_with_id(Integer interchangeble_with_id) {

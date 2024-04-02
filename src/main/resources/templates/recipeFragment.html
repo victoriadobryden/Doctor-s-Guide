@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<!-- recipeFragment.html -->
+<div th:fragment="recipe">
+    <h2>Recipe</h2>
+    <p th:text="'Diagnosis: ' + ${disease.name}">Diagnosis</p>
+    <p th:text="'Appointed Procedures: ' + ${disease.procedures}">Procedures</p>
+    <p>Appointed Medications:</p>
+    <ul>
+        <li th:each="medication : ${medications}"
+            th:text="${medication.medication.name} + ' - ' + ${medication.recommended_dosing_mg} + 'mg'">
+            Medication Name - Dosing
+        </li>
+    </ul>
+</div>

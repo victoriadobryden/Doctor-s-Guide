@@ -1,12 +1,13 @@
 package com.example.doctors_guide.data;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+import java.util.Set;
+
 @Entity
+@Table(name = "diseases")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -15,10 +16,12 @@ import lombok.*;
 public class Diseases {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id; // Changed to Integer
+    private Integer id;
+
     private String name;
     private String symptoms;
     private String procedures;
 
-    // Constructors, getters, and setters...
+    @OneToMany(mappedBy = "disease")
+    private Set<RecommendedMedications> recommendedMedications;
 }
