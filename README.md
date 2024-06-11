@@ -1,4 +1,5 @@
 Spring Boot Web-Application, that performs a choosing psychiatric diseases from database data and retrieving information about them from this and related databases, creating recipe for the patient.
+Used technologies: Java, Spring Boot, Maven, MySQL.
 ![image](https://github.com/victoriadobryden/Final-Control-Work-GeeksforLess/assets/65075884/bf225d88-4bb2-4949-af71-b4ab91b2e09a)
 ![image](https://github.com/victoriadobryden/Final-Control-Work-GeeksforLess/assets/65075884/b3c6d2b6-26a9-4bb0-92ad-1c946949a4ac)
 ![image](https://github.com/victoriadobryden/Final-Control-Work-GeeksforLess/assets/65075884/ad01548e-1a75-470c-8cc5-58c5e66d11cf)
